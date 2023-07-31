@@ -10,17 +10,25 @@ import SwiftUI
 @main
 struct GateKeeperApp: App {
   let client = LoginStatusClient.previewValue
+  let contentViewModel = ContentViewModel()
 
   var body: some Scene {
     WindowGroup {
       GateKeeperContainer(
-        model: GateKeeperModel(statusClient: client)) {
+        model: GateKeeperModel(
+          statusClient: client,
+          processDeeplink: { _ in
+            contentViewModel.destination = .detail
+          }
+        )
+      ) {
           VStack {
             Text("Inactive")
             Button("Go to Logged out") {
               client.changeStatus(.loggedOut)
             }
           }
+          .font(.title)
         } loggedOutcontent: {
           VStack {
             Text("Logged out")
@@ -28,6 +36,7 @@ struct GateKeeperApp: App {
               client.changeStatus(.loggedIn)
             }
           }
+          .font(.title)
         } loggedInContent: {
           VStack {
             Text("Logged in")
@@ -37,9 +46,9 @@ struct GateKeeperApp: App {
             Button("Deactivate") {
               client.changeStatus(.inactive)
             }
+            ContentView(model: contentViewModel)
           }
         }
-        .font(.title)
     }
   }
 }

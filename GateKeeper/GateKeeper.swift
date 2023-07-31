@@ -15,14 +15,22 @@ enum LoginStatus {
 }
 
 final class GateKeeperModel: ObservableObject {
-  init(statusClient: LoginStatusClient, status: LoginStatus = .inactive) {
+  init(
+    statusClient: LoginStatusClient,
+    processDeeplink: @escaping (URL) -> Void,
+    status: LoginStatus = .inactive
+  ) {
     self.status = status
     self.statusClient = statusClient
+    self.processDeeplink = processDeeplink
   }
   
   @Published var status: LoginStatus = .inactive
 
   let statusClient: LoginStatusClient
+
+  var urlCache: [URL] = []
+  let processDeeplink: (URL) -> Void
 
   func awake() async {
     await hookStatus()
@@ -32,6 +40,25 @@ final class GateKeeperModel: ObservableObject {
   func hookStatus() async {
     for await newStatus in statusClient.loginStatus() {
       self.status = newStatus
+      if newStatus == .loggedIn,
+         let url = urlCache.last {
+        urlCache = []
+        sendDeeplink(url)
+      }
+    }
+  }
+
+  func processUrl(_ url: URL) {
+    guard status == .loggedIn else {
+      urlCache.append(url)
+      return
+    }
+    sendDeeplink(url)
+  }
+
+  func sendDeeplink(_ url: URL) {
+    Task { @MainActor in
+      processDeeplink(url)
     }
   }
 }
@@ -61,38 +88,43 @@ struct GateKeeperContainer<
     .task {
       await model.awake()
     }
+    .onOpenURL { url in
+      model.processUrl(url)
+    }
   }
 }
 
-struct GateKeeperPreview: PreviewProvider {
-  static var previews: some View {
-    let client = LoginStatusClient.previewValue
-    return GateKeeperContainer(
-      model: GateKeeperModel(statusClient: client)) {
-        VStack {
-          Text("Inactive")
-          Button("Go to Logged out") {
-            client.changeStatus(.loggedOut)
-          }
-        }
-      } loggedOutcontent: {
-        VStack {
-          Text("Logged out")
-          Button("Go to logged in") {
-            client.changeStatus(.loggedIn)
-          }
-        }
-      } loggedInContent: {
-        VStack {
-          Text("Logged in")
-          Button("Log out") {
-            client.changeStatus(.loggedOut)
-          }
-          Button("Deactivate") {
-            client.changeStatus(.inactive)
-          }
-        }
+#Preview {
+  let client = LoginStatusClient.previewValue
+  return GateKeeperContainer(
+    model: GateKeeperModel(
+      statusClient: client,
+      processDeeplink: { _ in }
+    )
+  ) {
+    VStack {
+      Text("Inactive")
+      Button("Go to Logged out") {
+        client.changeStatus(.loggedOut)
       }
-      .font(.title)
+    }
+  } loggedOutcontent: {
+    VStack {
+      Text("Logged out")
+      Button("Go to logged in") {
+        client.changeStatus(.loggedIn)
+      }
+    }
+  } loggedInContent: {
+    VStack {
+      Text("Logged in")
+      Button("Log out") {
+        client.changeStatus(.loggedOut)
+      }
+      Button("Deactivate") {
+        client.changeStatus(.inactive)
+      }
+    }
   }
+  .font(.title)
 }

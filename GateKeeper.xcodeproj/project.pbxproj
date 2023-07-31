@@ -13,7 +13,19 @@
 		1801B73A2A7789FB009CC71F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1801B7392A7789FB009CC71F /* Preview Assets.xcassets */; };
 		1801B7412A778A1D009CC71F /* GateKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801B7402A778A1D009CC71F /* GateKeeper.swift */; };
 		1801B7432A778B8F009CC71F /* LoginStatusClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801B7422A778B8F009CC71F /* LoginStatusClient.swift */; };
+		1801B74B2A779365009CC71F /* GateKeeperModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801B74A2A779365009CC71F /* GateKeeperModelTests.swift */; };
+		189502512A77989800AD4CBC /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 189502502A77989800AD4CBC /* SwiftUINavigation */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1801B74C2A779365009CC71F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1801B7272A7789F9009CC71F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1801B72E2A7789F9009CC71F;
+			remoteInfo = GateKeeper;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1801B72F2A7789F9009CC71F /* GateKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GateKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,10 +35,21 @@
 		1801B7392A7789FB009CC71F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1801B7402A778A1D009CC71F /* GateKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateKeeper.swift; sourceTree = "<group>"; };
 		1801B7422A778B8F009CC71F /* LoginStatusClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatusClient.swift; sourceTree = "<group>"; };
+		1801B7482A779365009CC71F /* GateKeeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GateKeeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1801B74A2A779365009CC71F /* GateKeeperModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateKeeperModelTests.swift; sourceTree = "<group>"; };
+		183DDC2D2A779A0F009F5D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1801B72C2A7789F9009CC71F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				189502512A77989800AD4CBC /* SwiftUINavigation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1801B7452A779365009CC71F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				1801B7312A7789F9009CC71F /* GateKeeper */,
+				1801B7492A779365009CC71F /* GateKeeperTests */,
 				1801B7302A7789F9009CC71F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				1801B72F2A7789F9009CC71F /* GateKeeper.app */,
+				1801B7482A779365009CC71F /* GateKeeperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,6 +80,7 @@
 		1801B7312A7789F9009CC71F /* GateKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				183DDC2D2A779A0F009F5D19 /* Info.plist */,
 				1801B7322A7789F9009CC71F /* GateKeeperApp.swift */,
 				1801B7342A7789F9009CC71F /* ContentView.swift */,
 				1801B7402A778A1D009CC71F /* GateKeeper.swift */,
@@ -73,6 +99,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		1801B7492A779365009CC71F /* GateKeeperTests */ = {
+			isa = PBXGroup;
+			children = (
+				1801B74A2A779365009CC71F /* GateKeeperModelTests.swift */,
+			);
+			path = GateKeeperTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,9 +123,30 @@
 			dependencies = (
 			);
 			name = GateKeeper;
+			packageProductDependencies = (
+				189502502A77989800AD4CBC /* SwiftUINavigation */,
+			);
 			productName = GateKeeper;
 			productReference = 1801B72F2A7789F9009CC71F /* GateKeeper.app */;
 			productType = "com.apple.product-type.application";
+		};
+		1801B7472A779365009CC71F /* GateKeeperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1801B74E2A779365009CC71F /* Build configuration list for PBXNativeTarget "GateKeeperTests" */;
+			buildPhases = (
+				1801B7442A779365009CC71F /* Sources */,
+				1801B7452A779365009CC71F /* Frameworks */,
+				1801B7462A779365009CC71F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1801B74D2A779365009CC71F /* PBXTargetDependency */,
+			);
+			name = GateKeeperTests;
+			productName = GateKeeperTests;
+			productReference = 1801B7482A779365009CC71F /* GateKeeperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -106,6 +161,10 @@
 					1801B72E2A7789F9009CC71F = {
 						CreatedOnToolsVersion = 15.0;
 					};
+					1801B7472A779365009CC71F = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 1801B72E2A7789F9009CC71F;
+					};
 				};
 			};
 			buildConfigurationList = 1801B72A2A7789F9009CC71F /* Build configuration list for PBXProject "GateKeeper" */;
@@ -117,11 +176,15 @@
 				Base,
 			);
 			mainGroup = 1801B7262A7789F9009CC71F;
+			packageReferences = (
+				1895024F2A77989800AD4CBC /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
+			);
 			productRefGroup = 1801B7302A7789F9009CC71F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				1801B72E2A7789F9009CC71F /* GateKeeper */,
+				1801B7472A779365009CC71F /* GateKeeperTests */,
 			);
 		};
 /* End PBXProject section */
@@ -133,6 +196,13 @@
 			files = (
 				1801B73A2A7789FB009CC71F /* Preview Assets.xcassets in Resources */,
 				1801B7372A7789FB009CC71F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1801B7462A779365009CC71F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +220,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1801B7442A779365009CC71F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1801B74B2A779365009CC71F /* GateKeeperModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1801B74D2A779365009CC71F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1801B72E2A7789F9009CC71F /* GateKeeper */;
+			targetProxy = 1801B74C2A779365009CC71F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1801B73B2A7789FB009CC71F /* Debug */ = {
@@ -283,6 +369,7 @@
 				DEVELOPMENT_TEAM = XLS3XF57J8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GateKeeper/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -312,6 +399,7 @@
 				DEVELOPMENT_TEAM = XLS3XF57J8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GateKeeper/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -327,6 +415,42 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1801B74F2A779365009CC71F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XLS3XF57J8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.tadel.GateKeeperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GateKeeper.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GateKeeper";
+			};
+			name = Debug;
+		};
+		1801B7502A779365009CC71F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XLS3XF57J8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.tadel.GateKeeperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GateKeeper.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GateKeeper";
 			};
 			name = Release;
 		};
@@ -351,7 +475,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		1801B74E2A779365009CC71F /* Build configuration list for PBXNativeTarget "GateKeeperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1801B74F2A779365009CC71F /* Debug */,
+				1801B7502A779365009CC71F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1895024F2A77989800AD4CBC /* XCRemoteSwiftPackageReference "swiftui-navigation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swiftui-navigation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		189502502A77989800AD4CBC /* SwiftUINavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1895024F2A77989800AD4CBC /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
+			productName = SwiftUINavigation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1801B7272A7789F9009CC71F /* Project object */;
 }
